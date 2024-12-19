@@ -119,6 +119,14 @@
     justify-content: center;
   }
 
+  .draw-status {
+    display: flex;
+  }
+
+  .draw-status > svg {
+    margin: 5px;
+  }
+
   .first-character {
     color: var(--first-character-color);
   }
