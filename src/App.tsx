@@ -6,7 +6,6 @@ import Header from "./components/contents/Header";
 import Game from "./components/contents/Game";
 
 import { ThemeProvider } from "./components/theme-provider";
-import { Button } from "./components/ui/button";
 import { useState } from "react";
 
 export default function App() {
@@ -33,30 +32,6 @@ export default function App() {
     setCurrentMove(nextMove);
   }
 
-  const moves = history.map((_squares, move) => {
-    let description;
-
-    if (move > 0) {
-      description = "Go to move: " + move + ".";
-    } else {
-      description = "Go to game start";
-    }
-
-    return (
-      <li
-        className=""
-        key={move}
-      >
-        <Button
-          className=""
-          onClick={() => jumpTo(move)}
-        >
-          {description}
-        </Button>
-      </li>
-    );
-  });
-
   return (
     <ThemeProvider
       defaultTheme="light"
@@ -68,6 +43,7 @@ export default function App() {
           xIsNext={xIsNext}
           squares={currentSquares}
           onPlay={handlePlay}
+          jumpTo={jumpTo}
           firstCharacter={firstCharacter}
           secondCharacter={secondCharacter}
         />

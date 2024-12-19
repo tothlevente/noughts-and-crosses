@@ -1,5 +1,8 @@
 import BoardProps from "@/interfaces/BoardProps";
+import Status from "../status";
 import Square from "../square";
+
+import { Button } from "../ui/button";
 
 function calculateWinner(squares: Array<number>) {
   const lines = [
@@ -32,6 +35,7 @@ export default function Game({
   xIsNext,
   squares,
   onPlay,
+  jumpTo,
   firstCharacter,
   secondCharacter,
 }: BoardProps) {
@@ -42,11 +46,9 @@ export default function Game({
 
     const nextSquares = squares.slice();
 
-    if (xIsNext) {
-      nextSquares[i] = firstCharacter;
-    } else {
-      nextSquares[i] = secondCharacter;
-    }
+    xIsNext
+      ? (nextSquares[i] = firstCharacter)
+      : (nextSquares[i] = secondCharacter);
 
     onPlay(nextSquares);
   }
@@ -54,11 +56,9 @@ export default function Game({
   const winner = calculateWinner(squares);
   let status;
 
-  if (winner) {
-    status = winner;
-  } else {
-    status = xIsNext ? firstCharacter : secondCharacter;
-  }
+  winner
+    ? (status = winner)
+    : (status = xIsNext ? firstCharacter : secondCharacter);
 
   return (
     <div className="game-content board">
@@ -104,9 +104,19 @@ export default function Game({
           onSquareClick={() => handleClick(8)}
         />
       </div>
-      <div className="status">
-        {winner ? "Winner is:" : "Next player is:"} {status}
-      </div>
+      <Status
+        winner={winner}
+        status={status}
+      />
+
+      {winner ? (
+        <Button
+          className=""
+          onClick={() => jumpTo(0)}
+        >
+          Start a new game
+        </Button>
+      ) : null}
     </div>
   );
 }
