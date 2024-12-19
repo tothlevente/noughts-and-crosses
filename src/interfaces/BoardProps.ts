@@ -3,6 +3,7 @@ export default interface BoardProps {
   squares: any;
   onPlay: any;
   jumpTo: any;
+  draw: any;
   firstCharacter: JSX.Element;
   secondCharacter: JSX.Element;
 }

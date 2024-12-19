@@ -10,6 +10,7 @@ export default function Game({
   squares,
   onPlay,
   jumpTo,
+  draw,
   firstCharacter,
   secondCharacter,
 }: BoardProps) {
@@ -80,9 +81,10 @@ export default function Game({
       </div>
       <Status
         winner={winner}
+        draw={draw}
         status={status}
       />
-      {winner ? (
+      {winner || draw ? (
         <Button
           className=""
           onClick={() => jumpTo(0)}

@@ -1,5 +1,6 @@
 import useWindowDimensions from "./components/useWindowDimensions";
 import calculateWinner from "./controllers/calculateWinner";
+import calculateDraw from "./controllers/calculateDraw";
 import CircleDot from "./components/icons/circle-dot";
 import SquareProps from "./interfaces/SquareProps";
 import Footer from "./components/contents/Footer";
@@ -23,6 +24,7 @@ export default function App() {
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
   const winner = calculateWinner(currentSquares);
+  const draw = calculateDraw(history, winner, currentMove);
 
   function handlePlay(nextSquares: Array<SquareProps>) {
     const nextHistory = [
@@ -44,7 +46,7 @@ export default function App() {
       storageKey="vite-ui-theme"
     >
       <div className="site-wrapper">
-        {winner ? (
+        {winner || draw ? (
           <ReactConfetti
             width={width}
             height={height}
@@ -57,6 +59,7 @@ export default function App() {
           squares={currentSquares}
           onPlay={handlePlay}
           jumpTo={jumpTo}
+          draw={draw}
           firstCharacter={firstCharacter}
           secondCharacter={secondCharacter}
         />
