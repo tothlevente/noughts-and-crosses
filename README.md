@@ -16,6 +16,7 @@ In the project directory, you can run:
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Lucide Icons](https://lucide.dev)
 - [Google Fonts](https://fonts.google.com/specimen/Josefin+Sans)
+- [React confetti](https://www.npmjs.com/package/react-confetti)
 - [Josefin Sans Font](https://github.com/googlefonts/josefinsans)
 - [React (Tutorial: Tic-Tac-Toe)](https://react.dev/learn/tutorial-tic-tac-toe)
 
