@@ -1,0 +1,24 @@
+.square {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background: var(--square-background);
+  border: 1px solid var(--square-border);
+  float: left;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 94px;
+  width: 94px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+}
+
+.square:hover {
+  background: var(--square-hover-background);
+  color: var(--square-hover-color);
+}

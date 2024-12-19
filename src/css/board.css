@@ -1,0 +1,15 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-row:after {
+  clear: both;
+  display: table;
+  content: "";
+}
