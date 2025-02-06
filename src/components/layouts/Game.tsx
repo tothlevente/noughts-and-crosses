@@ -85,12 +85,7 @@ export default function Game({
         status={status}
       />
       {winner || draw ? (
-        <Button
-          className=""
-          onClick={() => jumpTo(0)}
-        >
-          Start a new game
-        </Button>
+        <Button onClick={() => jumpTo(0)}>Start a new game</Button>
       ) : null}
     </div>
   );
