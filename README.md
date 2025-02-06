@@ -11,7 +11,7 @@ In the project directory, you can run:
 - `npm run preview`
 - `npm run build`
 
-## Game rules
+## Game rules:
 
 - Players: The game is played by two players who take turns marking the game board. One player uses `X`, the other `O`.
 - The game board: The game board is a 3x3 grid consisting of nine squares.
