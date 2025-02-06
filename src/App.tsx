@@ -1,4 +1,5 @@
 import UseWindowDimensions from "./components/UseWindowDimensions";
+import CharacterSelector from "./components/CharacterSelector";
 import CalculateWinner from "./controllers/CalculateWinner";
 import CalculateDraw from "./controllers/CalculateDraw";
 import CircleDot from "./components/icons/circle-dot";
@@ -54,6 +55,12 @@ export default function App() {
           />
         ) : null}
         <Header />
+        <CharacterSelector
+          firstCharacter={firstCharacter}
+          secondCharacter={secondCharacter}
+          setFirstCharacter={setFirstCharacter}
+          setSecondCharacter={setSecondCharacter}
+        />
         <Game
           xIsNext={xIsNext}
           squares={currentSquares}
