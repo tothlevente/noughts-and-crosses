@@ -1,4 +1,4 @@
-import { ModeToggle } from "../mode-toggle";
+import { ModeToggle } from "../ModeToggle";
 import { GripIcon } from "lucide-react";
 
 export default function Header() {

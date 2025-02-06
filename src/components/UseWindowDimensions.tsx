@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function getWindowDimensions() {
+function GetWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {
     width,
@@ -8,14 +8,14 @@ function getWindowDimensions() {
   };
 }
 
-export default function useWindowDimensions() {
+export default function UseWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
+    GetWindowDimensions()
   );
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+      setWindowDimensions(GetWindowDimensions());
     }
 
     window.addEventListener("resize", handleResize);
