@@ -1,6 +1,6 @@
 # Noughts and crosses :video_game:
 
-Noughts and crosses is a classic two-player game played on a 3x3 grid. Players take turns placing marks (`X` or `O`) on the board, and the player who first manages to get three identical marks in a row, column or diagonal wins. If the board is full and there is no winner, the game is a draw.
+Noughts and crosses (tic-tac-toe) is a classic two-player game played on a 3x3 grid. Players take turns placing marks (`X` or `O`) on the board, and the player who first manages to get three identical marks in a row, column or diagonal wins. If the board is full and there is no winner, the game is a draw.
 
 ## Available scripts:
 
