@@ -23,19 +23,20 @@ import {
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
-const firstPlyerCharacters = [
-  <CircleXIcon />,
-  <DropletIcon />,
-  <MoonIcon />,
-  <KeyRoundIcon />,
-];
-
-const secondPlayerCharacter = [
-  <CircleDotIcon />,
-  <FlameIcon />,
-  <SunMediumIcon />,
-  <KeySquareIcon />,
-];
+const characters = {
+  firstPlayer: [
+    <CircleXIcon className="first-character" />,
+    <DropletIcon className="first-character" />,
+    <MoonIcon className="first-character" />,
+    <KeyRoundIcon className="first-character" />,
+  ],
+  secondPlayer: [
+    <CircleDotIcon className="second-character" />,
+    <FlameIcon className="second-character" />,
+    <SunMediumIcon className="second-character" />,
+    <KeySquareIcon className="second-character" />,
+  ],
+};
 
 export default function CharacterSelector({
   firstCharacter,
@@ -51,8 +52,8 @@ export default function CharacterSelector({
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setFirstCharacter(firstPlyerCharacters[0]);
-    setSecondCharacter(secondPlayerCharacter[0]);
+    setFirstCharacter(characters.firstPlayer[0]);
+    setSecondCharacter(characters.secondPlayer[0]);
     setOpen(true);
   }, []);
 
@@ -61,7 +62,7 @@ export default function CharacterSelector({
     index: number
   ) => {
     setFirstCharacter(character);
-    setSecondCharacter(secondPlayerCharacter[index]);
+    setSecondCharacter(characters.secondPlayer[index]);
   };
 
   const handleSecondCharacterClick = (character: JSX.Element) => {
@@ -96,7 +97,7 @@ export default function CharacterSelector({
         <div className="grid justify-items-center m-7">
           <p>First player, choose:</p>
           <div className="flex items-center space-x-2 gap-1.5 mb-3">
-            {firstPlyerCharacters.map((item, index) => (
+            {characters.firstPlayer.map((item, index) => (
               <Button
                 key={index}
                 variant="outline"
@@ -110,7 +111,7 @@ export default function CharacterSelector({
           </div>
           <p>Second player, choose:</p>
           <div className="flex items-center space-x-2 gap-1.5">
-            {secondPlayerCharacter.map((item, index) => (
+            {characters.secondPlayer.map((item, index) => (
               <Button
                 key={index}
                 variant="outline"

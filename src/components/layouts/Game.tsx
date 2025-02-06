@@ -80,6 +80,8 @@ export default function Game({
         />
       </div>
       <Status
+        firstCharacter={firstCharacter}
+        secondCharacter={secondCharacter}
         winner={winner}
         draw={draw}
         status={status}

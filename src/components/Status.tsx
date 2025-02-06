@@ -1,11 +1,12 @@
-import CircleDot from "./icons/circle-dot";
-import CircleX from "./icons/circle-x";
-
 export default function Status({
+  firstCharacter,
+  secondCharacter,
   winner,
   draw,
   status,
 }: {
+  firstCharacter: JSX.Element;
+  secondCharacter: JSX.Element;
   winner: number | null;
   draw: boolean;
   status: number | JSX.Element;
@@ -15,8 +16,8 @@ export default function Status({
       <div className="status">
         <b>Ist draw!</b>
         <div className="draw-status">
-          <CircleX />
-          <CircleDot />
+          {firstCharacter}
+          {secondCharacter}
         </div>
       </div>
     );
