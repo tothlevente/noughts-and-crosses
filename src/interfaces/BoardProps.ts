@@ -1,9 +1,11 @@
+import SquareProps from "./SquareProps";
+
 export default interface BoardProps {
-  xIsNext: any;
+  xIsNext: boolean;
   squares: any;
-  onPlay: any;
-  jumpTo: any;
-  draw: any;
+  onPlay: (nextSquares: Array<SquareProps>) => void;
+  jumpTo: (nextMove: number) => void;
+  draw: boolean;
   firstCharacter: JSX.Element;
   secondCharacter: JSX.Element;
 }

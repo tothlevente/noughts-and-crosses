@@ -3,10 +3,10 @@ import calculateWinner from "./controllers/calculateWinner";
 import calculateDraw from "./controllers/calculateDraw";
 import CircleDot from "./components/icons/circle-dot";
 import SquareProps from "./interfaces/SquareProps";
-import Footer from "./components/contents/Footer";
 import CircleX from "./components/icons/circle-x";
-import Header from "./components/contents/Header";
-import Game from "./components/contents/Game";
+import Header from "./components/layouts/Header";
+import Footer from "./components/layouts/Footer";
+import Game from "./components/layouts/Game";
 import ReactConfetti from "react-confetti";
 
 import { ThemeProvider } from "./components/theme-provider";
