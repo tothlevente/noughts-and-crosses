@@ -43,13 +43,13 @@ export default function App() {
       storageKey="vite-ui-theme"
     >
       <div className="site-wrapper">
-        {winner || draw ? (
+        {(winner || draw) && (
           <ReactConfetti
             width={width}
             height={height}
             recycle={false}
           />
-        ) : null}
+        )}
         <Header />
         <Game
           xIsNext={xIsNext}
