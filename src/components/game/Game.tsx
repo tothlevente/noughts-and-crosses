@@ -1,7 +1,7 @@
 import calculateWinner from "@/controllers/CalculateWinner";
 import BoardProps from "@/interfaces/BoardProps";
-import Status from "../Status";
-import Square from "../Square";
+import Status from "./Status";
+import Square from "./Square";
 
 import { Button } from "../ui/button";
 

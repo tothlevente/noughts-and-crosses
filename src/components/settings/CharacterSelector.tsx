@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const characters = {
   firstPlayer: [

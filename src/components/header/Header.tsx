@@ -1,7 +1,7 @@
-import { ModeToggle } from "../ModeToggle";
+import { ModeToggle } from "../themes/ModeToggle";
 import { GripIcon } from "lucide-react";
 
-import ReloadGame from "../ReloadGame";
+import ReloadGame from "./ReloadGame";
 
 export default function Header() {
   return (

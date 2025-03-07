@@ -1,21 +1,22 @@
-import UseWindowDimensions from "./components/UseWindowDimensions";
-import CharacterSelector from "./components/CharacterSelector";
+import CharacterSelector from "./components/settings/CharacterSelector";
+import UseWindowDimensions from "./components/use/UseWindowDimensions";
 import CalculateWinner from "./controllers/CalculateWinner";
 import CalculateDraw from "./controllers/CalculateDraw";
-import CircleDot from "./components/icons/circle-dot";
 import SquareProps from "./interfaces/SquareProps";
-import CircleX from "./components/icons/circle-x";
-import Header from "./components/layouts/Header";
-import Footer from "./components/layouts/Footer";
-import Game from "./components/layouts/Game";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import ReactConfetti from "react-confetti";
+import Game from "./components/game/Game";
 
-import { ThemeProvider } from "./components/ThemeProvider";
+import { ThemeProvider } from "./components/themes/ThemeProvider";
+import { CircleDotIcon, CircleXIcon } from "lucide-react";
 import { useState } from "react";
 
 export default function App() {
-  const [firstCharacter, setFirstCharacter] = useState(<CircleX />);
-  const [secondCharacter, setSecondCharacter] = useState(<CircleDot />);
+  const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
+  const [secondCharacter, setSecondCharacter] = useState(
+    <CircleDotIcon />
+  );
 
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
