@@ -101,7 +101,7 @@ export default function SelectCharactersDialog({
           </div>
         </div>
         <div className="grid justify-items-center m-7">
-          <p>First player, choose:</p>
+          <p>{t("firstPlayerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5 mb-3">
             {characters.firstPlayer.map((item, index) => (
               <Button
@@ -115,7 +115,7 @@ export default function SelectCharactersDialog({
               </Button>
             ))}
           </div>
-          <p>Second player, choose:</p>
+          <p>{t("secondPlayerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5">
             {characters.secondPlayer.map((item, index) => (
               <Button

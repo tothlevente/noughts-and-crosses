@@ -1,6 +1,8 @@
 {
   "startNewGame": "Neues Spiel starten",
-  "winnerIs": "Gewinner ist",
+  "firstPlayerChoose": "Erster Spieler, wähle:",
+  "secondPlayerChoose": "Zweiter Spieler, wähle:",
+  "winnerIs": "Der Gewinner ist",
   "istDraw": "Unentschieden!",
   "nextPlayerIs": "Nächster Spieler ist:",
   "selectCharactersTitle": "Charaktere auswählen",

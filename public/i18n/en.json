@@ -1,5 +1,7 @@
 {
   "startNewGame": "Start a new game",
+  "firstPlayerChoose": "First player, choose:",
+  "secondPlayerChoose": "Second player, choose:",
   "winnerIs": "Winner is",
   "istDraw": "Ist draw!",
   "nextPlayerIs": "Next player is:",
