@@ -9,35 +9,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import {
-  CircleDotIcon,
-  CircleXIcon,
-  DropletIcon,
-  FlameIcon,
-  KeyRoundIcon,
-  KeySquareIcon,
-  MoonIcon,
-  SunMediumIcon,
-} from "lucide-react";
-
+import { CHARACTERS } from "@/constants/characters";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
-import { useEffect } from "react";
-
-const characters = {
-  firstPlayer: [
-    <CircleXIcon className="first-character" />,
-    <DropletIcon className="first-character" />,
-    <MoonIcon className="first-character" />,
-    <KeyRoundIcon className="first-character" />,
-  ],
-  secondPlayer: [
-    <CircleDotIcon className="second-character" />,
-    <FlameIcon className="second-character" />,
-    <SunMediumIcon className="second-character" />,
-    <KeySquareIcon className="second-character" />,
-  ],
-};
 
 interface Props {
   open: boolean;
@@ -60,15 +34,9 @@ export default function SelectCharactersDialog({
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    setFirstCharacter(characters.firstPlayer[0]);
-    setSecondCharacter(characters.secondPlayer[0]);
-    setOpen(true);
-  }, []);
-
   const handleFirstCharacterClick = (character: JSX.Element, index: number) => {
     setFirstCharacter(character);
-    setSecondCharacter(characters.secondPlayer[index]);
+    setSecondCharacter(CHARACTERS.secondPlayer[index]);
   };
 
   const handleSecondCharacterClick = (character: JSX.Element) => {
@@ -103,7 +71,7 @@ export default function SelectCharactersDialog({
         <div className="grid justify-items-center m-7">
           <p>{t("firstPlayerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5 mb-3">
-            {characters.firstPlayer.map((item, index) => (
+            {CHARACTERS.firstPlayer.map((item, index) => (
               <Button
                 key={index}
                 variant="outline"
@@ -117,7 +85,7 @@ export default function SelectCharactersDialog({
           </div>
           <p>{t("secondPlayerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5">
-            {characters.secondPlayer.map((item, index) => (
+            {CHARACTERS.secondPlayer.map((item, index) => (
               <Button
                 key={index}
                 variant="outline"

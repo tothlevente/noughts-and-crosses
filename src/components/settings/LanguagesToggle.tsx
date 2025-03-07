@@ -7,7 +7,7 @@ import {
 
 import { CircleDotIcon, CircleIcon, LanguagesIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { LANGUAGES } from "@/constants";
+import { LANGUAGES } from "@/constants/languages";
 import { Button } from "../ui/button";
 import { useState } from "react";
 
@@ -37,11 +37,7 @@ const LanguagesToggle = () => {
             key={code}
             onClick={() => handleChangeLanguage(code)}
           >
-            {selectedLanguage === code ? (
-              <CircleDotIcon />
-            ) : (
-              <CircleIcon />
-            )}
+            {selectedLanguage === code ? <CircleDotIcon /> : <CircleIcon />}
             {label}
           </DropdownMenuItem>
         ))}

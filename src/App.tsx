@@ -10,14 +10,15 @@ import Game from "./components/game/Game";
 
 import { ThemeProvider } from "./components/themes/ThemeProvider";
 import { CircleDotIcon, CircleXIcon } from "lucide-react";
-import { useState } from "react";
+import { CHARACTERS } from "./constants/characters";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
   const [secondCharacter, setSecondCharacter] = useState(<CircleDotIcon />);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
-  const [openSelectCharacters, setOpenSelectCharacters] = useState(true);
+  const [openSelectCharacters, setOpenSelectCharacters] = useState(false);
 
   const { height, width } = UseWindowDimensions();
 
@@ -36,6 +37,11 @@ export default function App() {
   const jumpTo = (nextMove: number) => {
     setCurrentMove(nextMove);
   };
+
+  useEffect(() => {
+    setFirstCharacter(CHARACTERS.firstPlayer[0]);
+    setSecondCharacter(CHARACTERS.secondPlayer[0]);
+  }, []);
 
   return (
     <ThemeProvider
