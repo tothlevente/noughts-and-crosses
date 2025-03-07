@@ -1,4 +1,4 @@
-import { RotateCcwIcon } from "lucide-react";
+import { UserPenIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
 import React from "react";
@@ -20,7 +20,7 @@ const ReloadGame = ({ setOpenSelectCharacters, jumpTo }: Props) => {
       variant="outline"
       onClick={handleClose}
     >
-      <RotateCcwIcon />
+      <UserPenIcon />
     </Button>
   );
 };

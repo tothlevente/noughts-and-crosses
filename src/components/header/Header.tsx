@@ -1,6 +1,6 @@
 import { LanguagesToggle } from "../settings/LanguagesToggle";
+import { ReloadGame } from "../settings/ReloadGame";
 import { ModeToggle } from "../themes/ModeToggle";
-import { ReloadGame } from "./ReloadGame";
 import { GripIcon } from "lucide-react";
 
 interface Props {
