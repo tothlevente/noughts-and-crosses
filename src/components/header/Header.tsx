@@ -1,7 +1,7 @@
+import { LanguagesToggle } from "../settings/LanguagesToggle";
 import { ModeToggle } from "../themes/ModeToggle";
+import { ReloadWindow } from "./ReloadGame";
 import { GripIcon } from "lucide-react";
-
-import ReloadGame from "./ReloadGame";
 
 export default function Header() {
   return (
@@ -11,7 +11,8 @@ export default function Header() {
         <p className="ml-1 font-bold">Noughts and crosses</p>
       </div>
       <div className="flex flex-nowrap flex-row justify-center gap-2">
-        <ReloadGame />
+        <ReloadWindow />
+        <LanguagesToggle />
         <ModeToggle />
       </div>
     </div>

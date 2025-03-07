@@ -1,4 +1,4 @@
-import CharacterSelector from "./components/settings/CharacterSelector";
+import SelectCharacters from "./components/settings/SelectCharacters";
 import UseWindowDimensions from "./components/use/UseWindowDimensions";
 import CalculateWinner from "./controllers/CalculateWinner";
 import CalculateDraw from "./controllers/CalculateDraw";
@@ -56,7 +56,7 @@ export default function App() {
           />
         ) : null}
         <Header />
-        <CharacterSelector
+        <SelectCharacters
           firstCharacter={firstCharacter}
           secondCharacter={secondCharacter}
           setFirstCharacter={setFirstCharacter}

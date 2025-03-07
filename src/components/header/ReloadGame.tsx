@@ -1,7 +1,7 @@
 import { RotateCcwIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
-export default function ReloadGame() {
+const ReloadWindow = () => {
   return (
     <Button
       size="icon"
@@ -11,4 +11,6 @@ export default function ReloadGame() {
       <RotateCcwIcon />
     </Button>
   );
-}
+};
+
+export { ReloadWindow };

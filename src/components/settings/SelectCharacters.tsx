@@ -20,6 +20,7 @@ import {
   SunMediumIcon,
 } from "lucide-react";
 
+import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
@@ -38,18 +39,22 @@ const characters = {
   ],
 };
 
-export default function CharacterSelector({
-  firstCharacter,
-  setFirstCharacter,
-  secondCharacter,
-  setSecondCharacter,
-}: {
+interface Props {
   firstCharacter: JSX.Element;
   setFirstCharacter: React.Dispatch<React.SetStateAction<JSX.Element>>;
   secondCharacter: JSX.Element;
   setSecondCharacter: React.Dispatch<React.SetStateAction<JSX.Element>>;
-}) {
+}
+
+export default function SelectCharacters({
+  firstCharacter,
+  setFirstCharacter,
+  secondCharacter,
+  setSecondCharacter,
+}: Props) {
   const [open, setOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setFirstCharacter(characters.firstPlayer[0]);
@@ -82,10 +87,10 @@ export default function CharacterSelector({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex justify-center">
-            Select characters
+            {t("selectCharactersTitle")}
           </DialogTitle>
           <DialogDescription className="flex justify-center">
-            Please select the characters for each player.
+            {t("selectCharactersDescription")}
           </DialogDescription>
         </DialogHeader>
         <div>
@@ -126,7 +131,7 @@ export default function CharacterSelector({
         </div>
         <DialogFooter className="contents sm:justify-start">
           <DialogClose asChild>
-            <Button type="button">Play a new game!</Button>
+            <Button type="button">{t("startNewGame")}</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
