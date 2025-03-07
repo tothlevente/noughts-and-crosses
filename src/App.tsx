@@ -1,4 +1,4 @@
-import SelectCharacters from "./components/settings/SelectCharacters";
+import SelectCharactersDialog from "./components/settings/SelectCharactersDialog";
 import UseWindowDimensions from "./components/use/UseWindowDimensions";
 import CalculateWinner from "./controllers/CalculateWinner";
 import CalculateDraw from "./controllers/CalculateDraw";
@@ -14,12 +14,10 @@ import { useState } from "react";
 
 export default function App() {
   const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
-  const [secondCharacter, setSecondCharacter] = useState(
-    <CircleDotIcon />
-  );
-
+  const [secondCharacter, setSecondCharacter] = useState(<CircleDotIcon />);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [openSelectCharacters, setOpenSelectCharacters] = useState(true);
 
   const { height, width } = UseWindowDimensions();
 
@@ -28,19 +26,16 @@ export default function App() {
   const winner = CalculateWinner(currentSquares);
   const draw = CalculateDraw(history, winner, currentMove);
 
-  function handlePlay(nextSquares: Array<SquareProps>) {
-    const nextHistory = [
-      ...history.slice(0, currentMove + 1),
-      nextSquares,
-    ];
+  const handlePlay = (nextSquares: Array<SquareProps>) => {
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
 
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-  }
+  };
 
-  function jumpTo(nextMove: number) {
+  const jumpTo = (nextMove: number) => {
     setCurrentMove(nextMove);
-  }
+  };
 
   return (
     <ThemeProvider
@@ -56,12 +51,6 @@ export default function App() {
           />
         ) : null}
         <Header />
-        <SelectCharacters
-          firstCharacter={firstCharacter}
-          secondCharacter={secondCharacter}
-          setFirstCharacter={setFirstCharacter}
-          setSecondCharacter={setSecondCharacter}
-        />
         <Game
           xIsNext={xIsNext}
           squares={currentSquares}
@@ -73,6 +62,17 @@ export default function App() {
         />
         <Footer />
       </div>
+
+      {openSelectCharacters && (
+        <SelectCharactersDialog
+          open={openSelectCharacters}
+          setOpen={setOpenSelectCharacters}
+          firstCharacter={firstCharacter}
+          secondCharacter={secondCharacter}
+          setFirstCharacter={setFirstCharacter}
+          setSecondCharacter={setSecondCharacter}
+        />
+      )}
     </ThemeProvider>
   );
 }

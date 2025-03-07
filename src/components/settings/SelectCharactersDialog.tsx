@@ -21,8 +21,8 @@ import {
 } from "lucide-react";
 
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { useEffect } from "react";
 
 const characters = {
   firstPlayer: [
@@ -40,19 +40,23 @@ const characters = {
 };
 
 interface Props {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   firstCharacter: JSX.Element;
   setFirstCharacter: React.Dispatch<React.SetStateAction<JSX.Element>>;
   secondCharacter: JSX.Element;
   setSecondCharacter: React.Dispatch<React.SetStateAction<JSX.Element>>;
 }
 
-export default function SelectCharacters({
+export default function SelectCharactersDialog({
+  open,
+  setOpen,
   firstCharacter,
   setFirstCharacter,
   secondCharacter,
   setSecondCharacter,
 }: Props) {
-  const [open, setOpen] = useState(false);
+  if (!open) return null;
 
   const { t } = useTranslation();
 
@@ -62,10 +66,7 @@ export default function SelectCharacters({
     setOpen(true);
   }, []);
 
-  const handleFirstCharacterClick = (
-    character: JSX.Element,
-    index: number
-  ) => {
+  const handleFirstCharacterClick = (character: JSX.Element, index: number) => {
     setFirstCharacter(character);
     setSecondCharacter(characters.secondPlayer[index]);
   };
@@ -74,14 +75,14 @@ export default function SelectCharacters({
     setSecondCharacter(character);
   };
 
-  const handleClose = () => {
+  const onCancel = () => {
     setOpen(false);
   };
 
   return (
     <Dialog
       open={open}
-      onOpenChange={handleClose}
+      onOpenChange={onCancel}
     >
       <DialogTrigger></DialogTrigger>
       <DialogContent>
@@ -131,7 +132,12 @@ export default function SelectCharacters({
         </div>
         <DialogFooter className="contents sm:justify-start">
           <DialogClose asChild>
-            <Button type="button">{t("startNewGame")}</Button>
+            <Button
+              onClick={onCancel}
+              type="button"
+            >
+              {t("startNewGame")}
+            </Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
