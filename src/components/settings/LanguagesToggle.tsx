@@ -6,10 +6,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { CircleDotIcon, CircleIcon, LanguagesIcon } from "lucide-react";
-import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "@/constants/languages";
+import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { useState } from "react";
 
 const LanguagesToggle = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -19,7 +19,13 @@ const LanguagesToggle = () => {
   const handleChangeLanguage = (language: string) => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
+    localStorage.setItem("language", language);
   };
+
+  useEffect(() => {
+    const language = localStorage.getItem("language");
+    language ? handleChangeLanguage(language) : null;
+  }, []);
 
   return (
     <DropdownMenu>
