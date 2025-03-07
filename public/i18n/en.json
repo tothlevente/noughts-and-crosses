@@ -2,7 +2,7 @@
   "startNewGame": "Start a new game",
   "winnerIs": "Winner is",
   "istDraw": "Ist draw!",
-  "nextPlayerIs:": "Next player is:",
+  "nextPlayerIs": "Next player is:",
   "selectCharactersTitle": "Select characters",
   "selectCharactersDescription": "Please select the characters for each player."
 }

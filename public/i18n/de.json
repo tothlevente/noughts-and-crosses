@@ -2,7 +2,7 @@
   "startNewGame": "Neues Spiel starten",
   "winnerIs": "Gewinner ist",
   "istDraw": "Unentschieden!",
-  "nextPlayerIs:": "Nächster Spieler ist:",
+  "nextPlayerIs": "Nächster Spieler ist:",
   "selectCharactersTitle": "Charaktere auswählen",
   "selectCharactersDescription": "Bitte wähle die Charaktere für jeden Spieler aus."
 }
