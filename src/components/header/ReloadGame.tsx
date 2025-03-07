@@ -1,16 +1,28 @@
 import { RotateCcwIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
-const ReloadWindow = () => {
+import React from "react";
+
+interface Props {
+  setOpenSelectCharacters: React.Dispatch<React.SetStateAction<boolean>>;
+  jumpTo: (nextMove: number) => void;
+}
+
+const ReloadGame = ({ setOpenSelectCharacters, jumpTo }: Props) => {
+  const handleClose = () => {
+    setOpenSelectCharacters(true);
+    jumpTo(0);
+  };
+
   return (
     <Button
       size="icon"
       variant="outline"
-      onClick={() => window.location.reload()}
+      onClick={handleClose}
     >
       <RotateCcwIcon />
     </Button>
   );
 };
 
-export { ReloadWindow };
+export { ReloadGame };

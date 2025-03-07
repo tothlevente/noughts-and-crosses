@@ -50,7 +50,10 @@ export default function App() {
             recycle={false}
           />
         )}
-        <Header />
+        <Header
+          setOpenSelectCharacters={setOpenSelectCharacters}
+          jumpTo={jumpTo}
+        />
         <Game
           xIsNext={xIsNext}
           squares={currentSquares}
