@@ -1,8 +1,9 @@
-import calculateWinner from "@/controllers/calculateWinner";
+import calculateWinner from "@/controllers/CalculateWinner";
 import BoardProps from "@/interfaces/BoardProps";
-import Status from "../status";
-import Square from "../square";
+import Status from "./Status";
+import Square from "./Square";
 
+import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
 
 export default function Game({
@@ -14,6 +15,8 @@ export default function Game({
   firstCharacter,
   secondCharacter,
 }: BoardProps) {
+  const { t } = useTranslation();
+
   function handleClick(i: number) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -80,12 +83,14 @@ export default function Game({
         />
       </div>
       <Status
+        firstCharacter={firstCharacter}
+        secondCharacter={secondCharacter}
         winner={winner}
         draw={draw}
         status={status}
       />
       {winner || draw ? (
-        <Button onClick={() => jumpTo(0)}>Start a new game</Button>
+        <Button onClick={() => jumpTo(0)}>{t("startNewGame")}</Button>
       ) : null}
     </div>
   );

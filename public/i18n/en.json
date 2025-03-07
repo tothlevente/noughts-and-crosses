@@ -1,0 +1,10 @@
+{
+  "startNewGame": "Start a new game",
+  "firstPlayerChoose": "First player, choose:",
+  "secondPlayerChoose": "Second player, choose:",
+  "winnerIs": "Winner is",
+  "istDraw": "Ist draw!",
+  "nextPlayerIs": "Next player is:",
+  "selectCharactersTitle": "Select characters",
+  "selectCharactersDescription": "Please select the characters for each player."
+}

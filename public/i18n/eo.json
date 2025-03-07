@@ -1,0 +1,10 @@
+{
+  "startNewGame": "Komencu novan ludon",
+  "firstPlayerChoose": "Unua ludanto, elektu:",
+  "secondPlayerChoose": "Dua ludanto, elektu:",
+  "winnerIs": "La venkinto estas",
+  "istDraw": "Estas remizo!",
+  "nextPlayerIs": "La sekva ludanto estas:",
+  "selectCharactersTitle": "Elektu karakterojn",
+  "selectCharactersDescription": "Bonvolu elekti la karakterojn por ĉiu ludanto."
+}

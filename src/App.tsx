@@ -1,44 +1,47 @@
-import useWindowDimensions from "./components/useWindowDimensions";
-import calculateWinner from "./controllers/calculateWinner";
-import calculateDraw from "./controllers/calculateDraw";
-import CircleDot from "./components/icons/circle-dot";
+import SelectCharactersDialog from "./components/settings/SelectCharactersDialog";
+import UseWindowDimensions from "./components/use/UseWindowDimensions";
+import CalculateWinner from "./controllers/CalculateWinner";
+import CalculateDraw from "./controllers/CalculateDraw";
 import SquareProps from "./interfaces/SquareProps";
-import CircleX from "./components/icons/circle-x";
-import Header from "./components/layouts/Header";
-import Footer from "./components/layouts/Footer";
-import Game from "./components/layouts/Game";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import ReactConfetti from "react-confetti";
+import Game from "./components/game/Game";
 
-import { ThemeProvider } from "./components/theme-provider";
-import { useState } from "react";
+import { ThemeProvider } from "./components/themes/ThemeProvider";
+import { CircleDotIcon, CircleXIcon } from "lucide-react";
+import { CHARACTERS } from "./constants/characters";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [firstCharacter, setFirstCharacter] = useState(<CircleX />);
-  const [secondCharacter, setSecondCharacter] = useState(<CircleDot />);
-
+  const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
+  const [secondCharacter, setSecondCharacter] = useState(<CircleDotIcon />);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [openSelectCharacters, setOpenSelectCharacters] = useState(false);
 
-  const { height, width } = useWindowDimensions();
+  const { height, width } = UseWindowDimensions();
 
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
-  const winner = calculateWinner(currentSquares);
-  const draw = calculateDraw(history, winner, currentMove);
+  const winner = CalculateWinner(currentSquares);
+  const draw = CalculateDraw(history, winner, currentMove);
 
-  function handlePlay(nextSquares: Array<SquareProps>) {
-    const nextHistory = [
-      ...history.slice(0, currentMove + 1),
-      nextSquares,
-    ];
+  const handlePlay = (nextSquares: Array<SquareProps>) => {
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
 
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
-  }
+  };
 
-  function jumpTo(nextMove: number) {
+  const jumpTo = (nextMove: number) => {
     setCurrentMove(nextMove);
-  }
+  };
+
+  useEffect(() => {
+    setFirstCharacter(CHARACTERS.firstPlayer[0]);
+    setSecondCharacter(CHARACTERS.secondPlayer[0]);
+  }, []);
 
   return (
     <ThemeProvider
@@ -46,14 +49,17 @@ export default function App() {
       storageKey="vite-ui-theme"
     >
       <div className="site-wrapper">
-        {winner || draw ? (
+        {(winner || draw) && (
           <ReactConfetti
             width={width}
             height={height}
             recycle={false}
           />
-        ) : null}
-        <Header />
+        )}
+        <Header
+          setOpenSelectCharacters={setOpenSelectCharacters}
+          jumpTo={jumpTo}
+        />
         <Game
           xIsNext={xIsNext}
           squares={currentSquares}
@@ -65,6 +71,17 @@ export default function App() {
         />
         <Footer />
       </div>
+
+      {openSelectCharacters && (
+        <SelectCharactersDialog
+          open={openSelectCharacters}
+          setOpen={setOpenSelectCharacters}
+          firstCharacter={firstCharacter}
+          secondCharacter={secondCharacter}
+          setFirstCharacter={setFirstCharacter}
+          setSecondCharacter={setSecondCharacter}
+        />
+      )}
     </ThemeProvider>
   );
 }

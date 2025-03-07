@@ -6,7 +6,7 @@
  * @param currentMove - The current move number.
  * @returns `true` if the game is a draw, otherwise `false`.
  */
-export default function calculateDraw(
+export default function CalculateDraw(
   history: any,
   winner: number | null,
   currentMove: number

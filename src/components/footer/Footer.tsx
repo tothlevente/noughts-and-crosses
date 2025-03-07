@@ -1,8 +1,7 @@
-import packageJson from "../../../package.json";
-
-import ExternalLink from "../icons/external-link";
-
+import { ExternalLinkIcon } from "lucide-react";
 import { Button } from "../ui/button";
+
+import packageJson from "../../../package.json";
 
 export default function Footer() {
   return (
@@ -21,7 +20,7 @@ export default function Footer() {
             target="_blank"
             style={{ marginRight: "8px" }}
           >
-            <ExternalLink />
+            <ExternalLinkIcon />
             Repository
           </a>
         </Button>
@@ -31,7 +30,7 @@ export default function Footer() {
             target="_blank"
             style={{ marginRight: "8px" }}
           >
-            <ExternalLink />
+            <ExternalLinkIcon />
             License
           </a>
         </Button>
