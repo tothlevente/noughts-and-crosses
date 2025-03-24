@@ -1,5 +1,5 @@
-import calculateWinner from "@/controllers/CalculateWinner";
-import BoardProps from "@/interfaces/BoardProps";
+import calculateWinner from "@/utils/CalculateWinner";
+import BoardProps from "@/types/BoardProps";
 import Status from "./Status";
 import Square from "./Square";
 
@@ -24,9 +24,7 @@ export default function Game({
 
     const nextSquares = squares.slice();
 
-    xIsNext
-      ? (nextSquares[i] = firstCharacter)
-      : (nextSquares[i] = secondCharacter);
+    xIsNext ? (nextSquares[i] = firstCharacter) : (nextSquares[i] = secondCharacter);
 
     onPlay(nextSquares);
   }
@@ -34,9 +32,7 @@ export default function Game({
   const winner = calculateWinner(squares);
   let status;
 
-  winner
-    ? (status = winner)
-    : (status = xIsNext ? firstCharacter : secondCharacter);
+  winner ? (status = winner) : (status = xIsNext ? firstCharacter : secondCharacter);
 
   return (
     <div className="game-content board">

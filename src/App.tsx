@@ -1,10 +1,10 @@
 import SelectCharactersDialog from "./components/settings/SelectCharactersDialog";
 import UseWindowDimensions from "./components/use/UseWindowDimensions";
-import CalculateWinner from "./controllers/CalculateWinner";
-import CalculateDraw from "./controllers/CalculateDraw";
-import SquareProps from "./interfaces/SquareProps";
+import CalculateWinner from "./utils/CalculateWinner";
+import CalculateDraw from "./utils/CalculateDraw";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import SquareProps from "./types/SquareProps";
 import ReactConfetti from "react-confetti";
 import Game from "./components/game/Game";
 
