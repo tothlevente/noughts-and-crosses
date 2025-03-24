@@ -29,14 +29,14 @@ In the project directory, you can run:
 
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Lucide Icons](https://lucide.dev)
-- [Google Fonts](https://fonts.google.com/specimen/Josefin+Sans)
+- [Google Fonts](https://fonts.google.com/)
 - [React confetti](https://www.npmjs.com/package/react-confetti)
 - [Josefin Sans Font](https://github.com/googlefonts/josefinsans)
 - [React (Tutorial: Tic-Tac-Toe)](https://react.dev/learn/tutorial-tic-tac-toe)
 
 ## License:
 
-- This project is licensed under MIT.
-- The used font is licensed under the SIL Open Font License, Version 1.1.
+- This project is licensed under [MIT](https://github.com/tothlevente/noughts-and-crosses/blob/main/LICENSE).
+- The used font is licensed under the [SIL Open Font License, Version 1.1.](https://fonts.google.com/specimen/Josefin+Sans/license)
 
 For more information please visit the license files.
