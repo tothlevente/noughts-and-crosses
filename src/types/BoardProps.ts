@@ -6,6 +6,4 @@ export default interface BoardProps {
   onPlay: (nextSquares: Array<SquareProps>) => void;
   jumpTo: (nextMove: number) => void;
   draw: boolean;
-  firstCharacter: JSX.Element;
-  secondCharacter: JSX.Element;
 }
