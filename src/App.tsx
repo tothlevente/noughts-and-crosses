@@ -9,17 +9,16 @@ import ReactConfetti from "react-confetti";
 import Game from "./components/game/Game";
 
 import { ThemeProvider } from "./components/themes/ThemeProvider";
-import { CircleDotIcon, CircleXIcon } from "lucide-react";
+import { useCharacters } from "./context/CharactersContext";
 import { CHARACTERS } from "./constants/characters";
 import { useEffect, useState } from "react";
 
 export default function App() {
-  const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
-  const [secondCharacter, setSecondCharacter] = useState(<CircleDotIcon />);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const [openSelectCharacters, setOpenSelectCharacters] = useState(false);
 
+  const { setFirstCharacter, setSecondCharacter } = useCharacters();
   const { height, width } = UseWindowDimensions();
 
   const xIsNext = currentMove % 2 === 0;
@@ -66,8 +65,6 @@ export default function App() {
           onPlay={handlePlay}
           jumpTo={jumpTo}
           draw={draw}
-          firstCharacter={firstCharacter}
-          secondCharacter={secondCharacter}
         />
         <Footer />
       </div>
@@ -76,10 +73,6 @@ export default function App() {
         <SelectCharactersDialog
           open={openSelectCharacters}
           setOpen={setOpenSelectCharacters}
-          firstCharacter={firstCharacter}
-          secondCharacter={secondCharacter}
-          setFirstCharacter={setFirstCharacter}
-          setSecondCharacter={setSecondCharacter}
         />
       )}
     </ThemeProvider>
