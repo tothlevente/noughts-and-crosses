@@ -3,18 +3,12 @@ import BoardProps from "@/types/BoardProps";
 import Status from "./Status";
 import Square from "./Square";
 
+import { useCharacters } from "@/context/CharactersContext";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
 
-export default function Game({
-  xIsNext,
-  squares,
-  onPlay,
-  jumpTo,
-  draw,
-  firstCharacter,
-  secondCharacter,
-}: BoardProps) {
+export default function Game({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) {
+  const { firstCharacter, secondCharacter } = useCharacters();
   const { t } = useTranslation();
 
   function handleClick(i: number) {
@@ -79,8 +73,6 @@ export default function Game({
         />
       </div>
       <Status
-        firstCharacter={firstCharacter}
-        secondCharacter={secondCharacter}
         winner={winner}
         draw={draw}
         status={status}
