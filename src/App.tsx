@@ -1,42 +1,31 @@
-import SelectCharactersDialog from "./components/settings/SelectCharactersDialog";
-import UseWindowDimensions from "./components/use/UseWindowDimensions";
-import CalculateWinner from "./controllers/CalculateWinner";
-import CalculateDraw from "./controllers/CalculateDraw";
-import SquareProps from "./interfaces/SquareProps";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import ReactConfetti from "react-confetti";
-import Game from "./components/game/Game";
-
+import { UseWindowDimensions } from "./components/use/UseWindowDimensions";
+import { SelectCharacters } from "./components/settings/SelectCharacters";
 import { ThemeProvider } from "./components/themes/ThemeProvider";
-import { CircleDotIcon, CircleXIcon } from "lucide-react";
+import { useCharacters } from "./context/CharactersContext";
+import { calculateWinner } from "./utils/calculateWinner";
+import { calculateDraw } from "./utils/calculateDraw";
+import { Header } from "./components/header/Header";
+import { Footer } from "./components/footer/Footer";
 import { CHARACTERS } from "./constants/characters";
+import { Board } from "./components/board/Board";
+import { handlePlay } from "./utils/handlePlay";
 import { useEffect, useState } from "react";
+import { jumpTo } from "./utils/jumpTo";
+
+import ReactConfetti from "react-confetti";
 
 export default function App() {
-  const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
-  const [secondCharacter, setSecondCharacter] = useState(<CircleDotIcon />);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const [openSelectCharacters, setOpenSelectCharacters] = useState(false);
 
+  const { setFirstCharacter, setSecondCharacter } = useCharacters();
   const { height, width } = UseWindowDimensions();
 
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
-  const winner = CalculateWinner(currentSquares);
-  const draw = CalculateDraw(history, winner, currentMove);
-
-  const handlePlay = (nextSquares: Array<SquareProps>) => {
-    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-
-    setHistory(nextHistory);
-    setCurrentMove(nextHistory.length - 1);
-  };
-
-  const jumpTo = (nextMove: number) => {
-    setCurrentMove(nextMove);
-  };
+  const winner = calculateWinner(currentSquares);
+  const draw = calculateDraw(history, winner, currentMove);
 
   useEffect(() => {
     setFirstCharacter(CHARACTERS.firstPlayer[0]);
@@ -58,28 +47,24 @@ export default function App() {
         )}
         <Header
           setOpenSelectCharacters={setOpenSelectCharacters}
-          jumpTo={jumpTo}
+          jumpTo={(nextMove) => jumpTo(nextMove, setCurrentMove)}
         />
-        <Game
+        <Board
           xIsNext={xIsNext}
           squares={currentSquares}
-          onPlay={handlePlay}
-          jumpTo={jumpTo}
+          onPlay={(nextSquares) =>
+            handlePlay(nextSquares, history, currentMove, setHistory, setCurrentMove)
+          }
+          jumpTo={(nextMove) => jumpTo(nextMove, setCurrentMove)}
           draw={draw}
-          firstCharacter={firstCharacter}
-          secondCharacter={secondCharacter}
         />
         <Footer />
       </div>
 
       {openSelectCharacters && (
-        <SelectCharactersDialog
+        <SelectCharacters
           open={openSelectCharacters}
           setOpen={setOpenSelectCharacters}
-          firstCharacter={firstCharacter}
-          secondCharacter={secondCharacter}
-          setFirstCharacter={setFirstCharacter}
-          setSecondCharacter={setSecondCharacter}
         />
       )}
     </ThemeProvider>

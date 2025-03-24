@@ -7,7 +7,7 @@
  *  - 2: representing a square occupied by player 2.
  * @returns {number | null} - The player number (1 or 2) if there is a winner, or null if there is no winner.
  */
-export default function CalculateWinner(squares: Array<number>) {
+export const calculateWinner = (squares: Array<number>) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -22,14 +22,10 @@ export default function CalculateWinner(squares: Array<number>) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
 
-    if (
-      squares[a] &&
-      squares[a] === squares[b] &&
-      squares[a] === squares[c]
-    ) {
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
   }
 
   return null;
-}
+};

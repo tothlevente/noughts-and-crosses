@@ -6,9 +6,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
+import { useCharacters } from "@/context/CharactersContext";
 import { CHARACTERS } from "@/constants/characters";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
@@ -16,22 +16,12 @@ import { Button } from "../ui/button";
 interface Props {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  firstCharacter: JSX.Element;
-  setFirstCharacter: React.Dispatch<React.SetStateAction<JSX.Element>>;
-  secondCharacter: JSX.Element;
-  setSecondCharacter: React.Dispatch<React.SetStateAction<JSX.Element>>;
 }
 
-export default function SelectCharactersDialog({
-  open,
-  setOpen,
-  firstCharacter,
-  setFirstCharacter,
-  secondCharacter,
-  setSecondCharacter,
-}: Props) {
+export const SelectCharacters = ({ open, setOpen }: Props) => {
   if (!open) return null;
 
+  const { firstCharacter, setFirstCharacter, secondCharacter, setSecondCharacter } = useCharacters();
   const { t } = useTranslation();
 
   const handleFirstCharacterClick = (character: JSX.Element, index: number) => {
@@ -52,12 +42,9 @@ export default function SelectCharactersDialog({
       open={open}
       onOpenChange={onCancel}
     >
-      <DialogTrigger></DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="flex justify-center">
-            {t("selectCharactersTitle")}
-          </DialogTitle>
+          <DialogTitle className="flex justify-center">{t("selectCharactersTitle")}</DialogTitle>
           <DialogDescription className="flex justify-center">
             {t("selectCharactersDescription")}
           </DialogDescription>
@@ -111,4 +98,4 @@ export default function SelectCharactersDialog({
       </DialogContent>
     </Dialog>
   );
-}
+};

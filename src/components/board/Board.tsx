@@ -1,20 +1,22 @@
-import calculateWinner from "@/controllers/CalculateWinner";
-import BoardProps from "@/interfaces/BoardProps";
-import Status from "./Status";
-import Square from "./Square";
-
+import { useCharacters } from "@/context/CharactersContext";
+import { calculateWinner } from "@/utils/calculateWinner";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
+import { Status } from "./Status";
+import { Square } from "./Square";
 
-export default function Game({
-  xIsNext,
-  squares,
-  onPlay,
-  jumpTo,
-  draw,
-  firstCharacter,
-  secondCharacter,
-}: BoardProps) {
+import SquareProps from "@/types/SquareProps";
+
+interface BoardProps {
+  xIsNext: boolean;
+  squares: any;
+  onPlay: (nextSquares: Array<SquareProps>) => void;
+  jumpTo: (nextMove: number) => void;
+  draw: boolean;
+}
+
+export const Board = ({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) => {
+  const { firstCharacter, secondCharacter } = useCharacters();
   const { t } = useTranslation();
 
   function handleClick(i: number) {
@@ -24,9 +26,7 @@ export default function Game({
 
     const nextSquares = squares.slice();
 
-    xIsNext
-      ? (nextSquares[i] = firstCharacter)
-      : (nextSquares[i] = secondCharacter);
+    xIsNext ? (nextSquares[i] = firstCharacter) : (nextSquares[i] = secondCharacter);
 
     onPlay(nextSquares);
   }
@@ -34,9 +34,7 @@ export default function Game({
   const winner = calculateWinner(squares);
   let status;
 
-  winner
-    ? (status = winner)
-    : (status = xIsNext ? firstCharacter : secondCharacter);
+  winner ? (status = winner) : (status = xIsNext ? firstCharacter : secondCharacter);
 
   return (
     <div className="game-content board">
@@ -83,15 +81,11 @@ export default function Game({
         />
       </div>
       <Status
-        firstCharacter={firstCharacter}
-        secondCharacter={secondCharacter}
         winner={winner}
         draw={draw}
         status={status}
       />
-      {winner || draw ? (
-        <Button onClick={() => jumpTo(0)}>{t("startNewGame")}</Button>
-      ) : null}
+      {winner || draw ? <Button onClick={() => jumpTo(0)}>{t("startNewGame")}</Button> : null}
     </div>
   );
-}
+};
