@@ -1,13 +1,13 @@
 import { useCharacters } from "@/context/CharactersContext";
 import { useTranslation } from "react-i18next";
 
-interface Props {
+interface StatusProps {
   winner: number | null;
   draw: boolean;
   status: number | JSX.Element;
 }
 
-export default function Status({ winner, draw, status }: Props) {
+export const Status = ({ winner, draw, status }: StatusProps) => {
   const { firstCharacter, secondCharacter } = useCharacters();
   const { t } = useTranslation();
 
@@ -29,4 +29,4 @@ export default function Status({ winner, draw, status }: Props) {
       </div>
     );
   }
-}
+};

@@ -8,7 +8,7 @@ interface Props {
   jumpTo: (nextMove: number) => void;
 }
 
-export default function Header({ setOpenSelectCharacters, jumpTo }: Props) {
+export const Header = ({ setOpenSelectCharacters, jumpTo }: Props) => {
   return (
     <div className="flex justify-between items-center m-5">
       <div className="flex flex-nowrap flex-row justify-center">
@@ -25,4 +25,4 @@ export default function Header({ setOpenSelectCharacters, jumpTo }: Props) {
       </div>
     </div>
   );
-}
+};

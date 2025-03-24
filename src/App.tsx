@@ -1,17 +1,18 @@
-import SelectCharactersDialog from "./components/settings/SelectCharactersDialog";
-import UseWindowDimensions from "./components/use/UseWindowDimensions";
-import CalculateWinner from "./utils/CalculateWinner";
-import CalculateDraw from "./utils/CalculateDraw";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import SquareProps from "./types/SquareProps";
-import ReactConfetti from "react-confetti";
-import Game from "./components/game/Game";
-
+import { UseWindowDimensions } from "./components/use/UseWindowDimensions";
+import { SelectCharacters } from "./components/settings/SelectCharacters";
 import { ThemeProvider } from "./components/themes/ThemeProvider";
 import { useCharacters } from "./context/CharactersContext";
+import { calculateWinner } from "./utils/calculateWinner";
+import { calculateDraw } from "./utils/calculateDraw";
+import { Header } from "./components/header/Header";
+import { Footer } from "./components/footer/Footer";
 import { CHARACTERS } from "./constants/characters";
+import { Board } from "./components/board/Board";
+import { handlePlay } from "./utils/handlePlay";
 import { useEffect, useState } from "react";
+import { jumpTo } from "./utils/jumpTo";
+
+import ReactConfetti from "react-confetti";
 
 export default function App() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -23,19 +24,8 @@ export default function App() {
 
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
-  const winner = CalculateWinner(currentSquares);
-  const draw = CalculateDraw(history, winner, currentMove);
-
-  const handlePlay = (nextSquares: Array<SquareProps>) => {
-    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-
-    setHistory(nextHistory);
-    setCurrentMove(nextHistory.length - 1);
-  };
-
-  const jumpTo = (nextMove: number) => {
-    setCurrentMove(nextMove);
-  };
+  const winner = calculateWinner(currentSquares);
+  const draw = calculateDraw(history, winner, currentMove);
 
   useEffect(() => {
     setFirstCharacter(CHARACTERS.firstPlayer[0]);
@@ -57,20 +47,22 @@ export default function App() {
         )}
         <Header
           setOpenSelectCharacters={setOpenSelectCharacters}
-          jumpTo={jumpTo}
+          jumpTo={(nextMove) => jumpTo(nextMove, setCurrentMove)}
         />
-        <Game
+        <Board
           xIsNext={xIsNext}
           squares={currentSquares}
-          onPlay={handlePlay}
-          jumpTo={jumpTo}
+          onPlay={(nextSquares) =>
+            handlePlay(nextSquares, history, currentMove, setHistory, setCurrentMove)
+          }
+          jumpTo={(nextMove) => jumpTo(nextMove, setCurrentMove)}
           draw={draw}
         />
         <Footer />
       </div>
 
       {openSelectCharacters && (
-        <SelectCharactersDialog
+        <SelectCharacters
           open={openSelectCharacters}
           setOpen={setOpenSelectCharacters}
         />

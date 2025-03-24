@@ -6,7 +6,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 
 import { useCharacters } from "@/context/CharactersContext";
@@ -19,7 +18,7 @@ interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SelectCharactersDialog({ open, setOpen }: Props) {
+export const SelectCharacters = ({ open, setOpen }: Props) => {
   if (!open) return null;
 
   const { firstCharacter, setFirstCharacter, secondCharacter, setSecondCharacter } = useCharacters();
@@ -43,7 +42,6 @@ export default function SelectCharactersDialog({ open, setOpen }: Props) {
       open={open}
       onOpenChange={onCancel}
     >
-      <DialogTrigger></DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex justify-center">{t("selectCharactersTitle")}</DialogTitle>
@@ -100,4 +98,4 @@ export default function SelectCharactersDialog({ open, setOpen }: Props) {
       </DialogContent>
     </Dialog>
   );
-}
+};

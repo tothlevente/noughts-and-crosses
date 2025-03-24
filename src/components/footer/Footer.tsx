@@ -3,13 +3,11 @@ import { Button } from "../ui/button";
 
 import packageJson from "../../../package.json";
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <div className="footer">
       <p>This website is open source and licensed under MIT.</p>
-      <p>
-        This website is does not use cookies and collect data about you.
-      </p>
+      <p>This website is does not use cookies and collect data about you.</p>
       <p>For more information please visit the project repository.</p>
       <p>Thank you for your visiting and intrest! 👍️</p>
       <p>Created by Levente in 2024 | v{packageJson.version}</p>
@@ -47,4 +45,4 @@ export default function Footer() {
       </a>
     </div>
   );
-}
+};

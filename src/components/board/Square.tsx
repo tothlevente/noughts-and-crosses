@@ -1,6 +1,6 @@
 import SquareProps from "@/types/SquareProps";
 
-export default function Square({ value, onSquareClick }: SquareProps) {
+export const Square = ({ value, onSquareClick }: SquareProps) => {
   return (
     <button
       className="square"
@@ -9,4 +9,4 @@ export default function Square({ value, onSquareClick }: SquareProps) {
       {value}
     </button>
   );
-}
+};

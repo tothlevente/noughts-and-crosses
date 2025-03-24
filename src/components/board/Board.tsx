@@ -1,13 +1,21 @@
-import calculateWinner from "@/utils/CalculateWinner";
-import BoardProps from "@/types/BoardProps";
-import Status from "./Status";
-import Square from "./Square";
-
 import { useCharacters } from "@/context/CharactersContext";
+import { calculateWinner } from "@/utils/calculateWinner";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
+import { Status } from "./Status";
+import { Square } from "./Square";
 
-export default function Game({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) {
+import SquareProps from "@/types/SquareProps";
+
+interface BoardProps {
+  xIsNext: boolean;
+  squares: any;
+  onPlay: (nextSquares: Array<SquareProps>) => void;
+  jumpTo: (nextMove: number) => void;
+  draw: boolean;
+}
+
+export const Board = ({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) => {
   const { firstCharacter, secondCharacter } = useCharacters();
   const { t } = useTranslation();
 
@@ -77,9 +85,7 @@ export default function Game({ xIsNext, squares, onPlay, jumpTo, draw }: BoardPr
         draw={draw}
         status={status}
       />
-      {winner || draw ? (
-        <Button onClick={() => jumpTo(0)}>{t("startNewGame")}</Button>
-      ) : null}
+      {winner || draw ? <Button onClick={() => jumpTo(0)}>{t("startNewGame")}</Button> : null}
     </div>
   );
-}
+};
