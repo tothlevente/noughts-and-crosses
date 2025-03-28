@@ -19,12 +19,12 @@ interface Props {
 export const SelectCharacters = ({ open, setOpen }: Props) => {
   if (!open) return null;
 
-  const { firstCharacter, setFirstCharacter, computerCharacter, setComputerCharacter } =
+  const { playerCharacter, setPlayerCharacter, computerCharacter, setComputerCharacter } =
     useCharacters();
   const { t } = useTranslation();
 
-  const handleFirstCharacterClick = (character: JSX.Element, index: number) => {
-    setFirstCharacter(character);
+  const handlePlayerCharacterClick = (character: JSX.Element, index: number) => {
+    setPlayerCharacter(character);
     setComputerCharacter(CHARACTERS.computer[index]);
   };
 
@@ -50,20 +50,20 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
         </DialogHeader>
         <div>
           <div className="flex flex-row justify-center items-center gap-2.5">
-            <p className="first-character">{firstCharacter}</p>
+            <p className="player-character">{playerCharacter}</p>
             <p className="computer-character">{computerCharacter}</p>
           </div>
         </div>
         <div className="grid justify-items-center m-6">
           <p>{t("playerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5 mb-3">
-            {CHARACTERS.firstPlayer.map((item, index) => (
+            {CHARACTERS.player.map((item, index) => (
               <Button
                 key={index}
                 variant="outline"
                 size="icon"
-                className="first-character"
-                onClick={() => handleFirstCharacterClick(item, index)}
+                className="player-character"
+                onClick={() => handlePlayerCharacterClick(item, index)}
               >
                 {item}
               </Button>
