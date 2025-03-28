@@ -19,7 +19,7 @@ export default function App() {
   const [currentMove, setCurrentMove] = useState(0);
   const [openSelectCharacters, setOpenSelectCharacters] = useState(false);
 
-  const { setFirstCharacter, setComputerCharacter } = useCharacters();
+  const { setPlayerCharacter, setComputerCharacter } = useCharacters();
   const { height, width } = UseWindowDimensions();
 
   const xIsNext = currentMove % 2 === 0;
@@ -28,7 +28,7 @@ export default function App() {
   const draw = calculateDraw(history, winner, currentMove);
 
   useEffect(() => {
-    setFirstCharacter(CHARACTERS.firstPlayer[0]);
+    setPlayerCharacter(CHARACTERS.player[0]);
     setComputerCharacter(CHARACTERS.computer[0]);
   }, []);
 
