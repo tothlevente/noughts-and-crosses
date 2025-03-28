@@ -1,6 +1,11 @@
+<data id="circle-x-icon" value='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>'></data>
+
 # Noughts and crosses :video_game:
 
 Noughts and crosses (tic-tac-toe) is a classic two-player game played on a 3x3 grid. Players take turns placing marks (`X` or `O`) on the board, and the player who first manages to get three identical marks in a row, column or diagonal wins. If the board is full and there is no winner, the game is a draw.
+
+> [!NOTE]
+> This branch introduces computer-generated move creation using Brain.js. It's a standalone development branch, deviating from the standard feature branch workflow. For our typical development practices, please refer to the feature branches.
 
 ## Available scripts:
 
@@ -13,7 +18,7 @@ In the project directory, you can run:
 
 ## Game rules:
 
-- Players: The game is played by two players who take turns marking the game board. One player uses `X`, the other `O`.
+- Players: The game is played by player and compuetr who take turns marking the game board. One player uses <div id="svg-display"></div>, the compuetr `O`.
 - The game board: The game board is a 3x3 grid consisting of nine squares.
 - The goal of the game: The goal of the game is to place three identical marks (`X` or `O`) in a row, column or diagonal.
 
@@ -27,6 +32,7 @@ In the project directory, you can run:
 
 ## Used external sources:
 
+- [Brain.js](https://github.com/BrainJS/brain.js)
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Lucide Icons](https://lucide.dev)
 - [Google Fonts](https://fonts.google.com/)
@@ -40,3 +46,7 @@ In the project directory, you can run:
 - The used font is licensed under the [SIL Open Font License, Version 1.1.](https://fonts.google.com/specimen/Josefin+Sans/license)
 
 For more information please visit the license files.
+
+<script>
+  document.getElementById('svg-display').innerHTML = document.getElementById('circle-x-icon').getAttribute('value');
+</script>
