@@ -51,11 +51,11 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
         <div>
           <div className="flex flex-row justify-center items-center gap-2.5">
             <p className="first-character">{firstCharacter}</p>
-            <p className="second-character">{computerCharacter}</p>
+            <p className="computer-character">{computerCharacter}</p>
           </div>
         </div>
         <div className="grid justify-items-center m-6">
-          <p>{t("firstPlayerChoose")}</p>
+          <p>{t("playerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5 mb-3">
             {CHARACTERS.firstPlayer.map((item, index) => (
               <Button
@@ -76,7 +76,7 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
                 key={index}
                 variant="outline"
                 size="icon"
-                className="second-character"
+                className="computer-character"
                 onClick={() => handleComputerCharacterClick(item)}
               >
                 {item}
