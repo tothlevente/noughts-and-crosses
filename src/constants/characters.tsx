@@ -16,7 +16,7 @@ export const CHARACTERS = {
     <MoonIcon className="first-character" />,
     <KeyRoundIcon className="first-character" />,
   ],
-  secondPlayer: [
+  computer: [
     <CircleDotIcon className="second-character" />,
     <FlameIcon className="second-character" />,
     <SunMediumIcon className="second-character" />,
