@@ -1,15 +1,14 @@
 import {
   Dialog,
-  DialogClose,
+  DialogTitle,
+  DialogHeader,
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
 
 import { useCharacters } from "@/context/CharactersContext";
 import { CHARACTERS } from "@/constants/characters";
+import { useMode } from "@/context/ModeContext";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/button";
 
@@ -22,6 +21,7 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
   if (!open) return null;
 
   const { firstCharacter, setFirstCharacter, secondCharacter, setSecondCharacter } = useCharacters();
+  const { setMode } = useMode();
   const { t } = useTranslation();
 
   const handleFirstCharacterClick = (character: JSX.Element, index: number) => {
@@ -31,6 +31,16 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
 
   const handleSecondCharacterClick = (character: JSX.Element) => {
     setSecondCharacter(character);
+  };
+
+  const handlePlayerVsComputerClick = () => {
+    setMode("computer");
+    onCancel();
+  };
+
+  const handlePlayerVsPlayerClick = () => {
+    setMode("player");
+    onCancel();
   };
 
   const onCancel = () => {
@@ -55,7 +65,7 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
             <p className="second-character">{secondCharacter}</p>
           </div>
         </div>
-        <div className="grid justify-items-center m-7">
+        <div className="grid justify-items-center m-6">
           <p>{t("firstPlayerChoose")}</p>
           <div className="flex items-center space-x-2 gap-1.5 mb-3">
             {CHARACTERS.firstPlayer.map((item, index) => (
@@ -85,16 +95,20 @@ export const SelectCharacters = ({ open, setOpen }: Props) => {
             ))}
           </div>
         </div>
-        <DialogFooter className="contents sm:justify-start">
-          <DialogClose asChild>
-            <Button
-              onClick={onCancel}
-              type="button"
-            >
-              {t("startNewGame")}
-            </Button>
-          </DialogClose>
-        </DialogFooter>
+        <div className="flex flex-col justify-center gap-2">
+          <Button
+            variant="default"
+            onClick={handlePlayerVsPlayerClick}
+          >
+            {t("startNewGamePlayerVsPlayer")}
+          </Button>
+          <Button
+            variant="outline"
+            onClick={handlePlayerVsComputerClick}
+          >
+            {t("startNewGamePlayerVsComputer")}
+          </Button>
+        </div>
       </DialogContent>
     </Dialog>
   );
