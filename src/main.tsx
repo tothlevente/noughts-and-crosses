@@ -1,4 +1,5 @@
 import { CharactersProvider } from "./context/CharactersContext.tsx";
+import { ModeProvider } from "./context/ModeContext.tsx";
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 
@@ -10,7 +11,9 @@ import App from "./App.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <CharactersProvider>
-      <App />
+      <ModeProvider>
+        <App />
+      </ModeProvider>
     </CharactersProvider>
   </StrictMode>
 );
