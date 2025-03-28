@@ -10,11 +10,11 @@ import {
 } from "lucide-react";
 
 export const CHARACTERS = {
-  firstPlayer: [
-    <CircleXIcon className="first-character" />,
-    <DropletIcon className="first-character" />,
-    <MoonIcon className="first-character" />,
-    <KeyRoundIcon className="first-character" />,
+  player: [
+    <CircleXIcon className="player-character" />,
+    <DropletIcon className="player-character" />,
+    <MoonIcon className="player-character" />,
+    <KeyRoundIcon className="player-character" />,
   ],
   computer: [
     <CircleDotIcon className="computer-character" />,
