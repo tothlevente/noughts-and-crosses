@@ -8,7 +8,7 @@ interface StatusProps {
 }
 
 export const Status = ({ winner, draw, status }: StatusProps) => {
-  const { firstCharacter, secondCharacter } = useCharacters();
+  const { firstCharacter, computerCharacter } = useCharacters();
   const { t } = useTranslation();
 
   if (draw) {
@@ -17,14 +17,14 @@ export const Status = ({ winner, draw, status }: StatusProps) => {
         <b>{t("istDraw")}</b>
         <div className="draw-status">
           {firstCharacter}
-          {secondCharacter}
+          {computerCharacter}
         </div>
       </div>
     );
   } else {
     return (
       <div className="status">
-        {winner ? <b>{t("winnerIs")}</b> : <p>{t("nextPlayerIs")}</p>}
+        {winner ? <b>{t("winnerIs")}</b> : <p>{t("nextCharacterIs")}</p>}
         {status}
       </div>
     );
