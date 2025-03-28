@@ -1,6 +1,6 @@
 import { UseWindowDimensions } from "./components/use/UseWindowDimensions";
 import { SelectCharacters } from "./components/settings/SelectCharacters";
-import { ThemeProvider } from "./components/themes/ThemeProvider";
+import { ThemeProvider } from "./context/ThemeContext";
 import { useCharacters } from "./context/CharactersContext";
 import { calculateWinner } from "./utils/calculateWinner";
 import { calculateDraw } from "./utils/calculateDraw";
