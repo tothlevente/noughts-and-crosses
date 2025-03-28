@@ -16,7 +16,7 @@ interface BoardProps {
 }
 
 export const Board = ({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) => {
-  const { firstCharacter, computerCharacter } = useCharacters();
+  const { playerCharacter, computerCharacter } = useCharacters();
   const { t } = useTranslation();
 
   function handleClick(i: number) {
@@ -26,7 +26,7 @@ export const Board = ({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) =>
 
     const nextSquares = squares.slice();
 
-    xIsNext ? (nextSquares[i] = firstCharacter) : (nextSquares[i] = computerCharacter);
+    xIsNext ? (nextSquares[i] = playerCharacter) : (nextSquares[i] = computerCharacter);
 
     onPlay(nextSquares);
   }
@@ -34,7 +34,7 @@ export const Board = ({ xIsNext, squares, onPlay, jumpTo, draw }: BoardProps) =>
   const winner = calculateWinner(squares);
   let status;
 
-  winner ? (status = winner) : (status = xIsNext ? firstCharacter : computerCharacter);
+  winner ? (status = winner) : (status = xIsNext ? playerCharacter : computerCharacter);
 
   return (
     <div className="game-content board">
