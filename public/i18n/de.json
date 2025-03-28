@@ -1,7 +1,7 @@
 {
-  "startNewGame": "Neues Spiel starten",
+  "startNewGame": "Starte ein neues Spiel als Spieler gegen Computer",
   "firstPlayerChoose": "Erster Spieler, wähle:",
-  "secondPlayerChoose": "Zweiter Spieler, wähle:",
+  "computerChoose": "Zweiter Spieler, wähle:",
   "winnerIs": "Der Gewinner ist",
   "istDraw": "Unentschieden!",
   "nextPlayerIs": "Nächster Spieler ist:",
