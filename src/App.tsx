@@ -1,8 +1,8 @@
 import { UseWindowDimensions } from "./components/use/UseWindowDimensions";
 import { SelectCharacters } from "./components/settings/SelectCharacters";
-import { ThemeProvider } from "./context/ThemeContext";
 import { useCharacters } from "./context/CharactersContext";
 import { calculateWinner } from "./utils/calculateWinner";
+import { ThemeProvider } from "./context/ThemeContext";
 import { calculateDraw } from "./utils/calculateDraw";
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/footer/Footer";
@@ -19,7 +19,7 @@ export default function App() {
   const [currentMove, setCurrentMove] = useState(0);
   const [openSelectCharacters, setOpenSelectCharacters] = useState(false);
 
-  const { setFirstCharacter, setSecondCharacter } = useCharacters();
+  const { setFirstCharacter, setComputerCharacter } = useCharacters();
   const { height, width } = UseWindowDimensions();
 
   const xIsNext = currentMove % 2 === 0;
@@ -29,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     setFirstCharacter(CHARACTERS.firstPlayer[0]);
-    setSecondCharacter(CHARACTERS.secondPlayer[0]);
+    setComputerCharacter(CHARACTERS.computer[0]);
   }, []);
 
   return (
