@@ -14,17 +14,17 @@ In the project directory, you can run:
 
 ## Game rules:
 
-- Players: The game is played by two players who take turns marking the game board. One player uses `X`, the other `O`.
+- The game is played by one player and one computer who take turns marking the game board. One player uses `X`, the computer `O`.
 - The game board: The game board is a 3x3 grid consisting of nine squares.
 - The goal of the game: The goal of the game is to place three identical marks (`X` or `O`) in a row, column or diagonal.
 
 ## How to play:
 
-1. Players take turns placing marks on an empty square.
+1. Player and computer take turns placing marks on an empty square.
 2. The first player usually uses `X`.
-3. Players continue taking turns until someone wins or the board is full.
+3. Computer and player continue taking turns until someone wins or the board is full.
 4. Winning: The player who first manages to get three identical marks in a row, column or diagonal wins.
-5. Draw: If the board is full and neither player has won, the game is a draw.
+5. Draw: If the board is full and neither player or computer has won, the game is a draw.
 
 ## Used external sources:
 
