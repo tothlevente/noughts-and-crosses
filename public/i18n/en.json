@@ -1,10 +1,10 @@
 {
   "startNewGame": "Start a new game player vs computer",
-  "firstPlayerChoose": "First player, choose:",
-  "computerChoose": "Second player, choose:",
-  "winnerIs": "Winner is",
+  "playerChoose": "Player character:",
+  "computerChoose": "Computer character:",
+  "winnerIs": "The winner is:",
   "istDraw": "Ist draw!",
-  "nextPlayerIs": "Next player is:",
+  "nextCharacterIs": "The next character is:",
   "selectCharactersTitle": "Select characters",
-  "selectCharactersDescription": "Please select the characters for each player."
+  "selectCharactersDescription": "Please select the characters for a player and for a computer."
 }

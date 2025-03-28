@@ -1,10 +1,10 @@
 {
-  "startNewGame": "Starte ein neues Spiel als Spieler gegen Computer",
-  "firstPlayerChoose": "Erster Spieler, wähle:",
-  "computerChoose": "Zweiter Spieler, wähle:",
-  "winnerIs": "Der Gewinner ist",
+  "startNewGame": "Starte ein neues Spiel Spieler gegen Computer",
+  "playerChoose": "Spieler Charakter:",
+  "computerChoose": "Computer Charakter:",
+  "winnerIs": "Der Gewinner ist:",
   "istDraw": "Unentschieden!",
-  "nextPlayerIs": "Nächster Spieler ist:",
+  "nextCharacterIs": "Der nächste Charakter ist:",
   "selectCharactersTitle": "Charaktere auswählen",
-  "selectCharactersDescription": "Bitte wähle die Charaktere für jeden Spieler aus."
+  "selectCharactersDescription": "Bitte wähle die Charaktere für einen Spieler und für einen Computer aus."
 }

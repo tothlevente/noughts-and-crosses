@@ -1,10 +1,10 @@
 {
   "startNewGame": "Komencu novan ludon ludanto kontraŭ komputilo",
-  "firstPlayerChoose": "Unua ludanto, elektu:",
-  "computerChoose": "Dua ludanto, elektu:",
-  "winnerIs": "La venkinto estas",
+  "playerChoose": "Ludanta karaktero:",
+  "computerChoose": "Komputila karaktero:",
+  "winnerIs": "La venkinto estas:",
   "istDraw": "Estas remizo!",
-  "nextPlayerIs": "La sekva ludanto estas:",
+  "nextCharacterIs": "La sekva karaktero estas:",
   "selectCharactersTitle": "Elektu karakterojn",
-  "selectCharactersDescription": "Bonvolu elekti la karakterojn por ĉiu ludanto."
+  "selectCharactersDescription": "Bonvolu elekti la karakterojn por ludanto kaj por komputilo."
 }
