@@ -17,9 +17,9 @@ export const CHARACTERS = {
     <KeyRoundIcon className="first-character" />,
   ],
   computer: [
-    <CircleDotIcon className="second-character" />,
-    <FlameIcon className="second-character" />,
-    <SunMediumIcon className="second-character" />,
-    <KeySquareIcon className="second-character" />,
+    <CircleDotIcon className="computer-character" />,
+    <FlameIcon className="computer-character" />,
+    <SunMediumIcon className="computer-character" />,
+    <KeySquareIcon className="computer-character" />,
   ],
 };
