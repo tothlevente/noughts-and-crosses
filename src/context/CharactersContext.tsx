@@ -2,24 +2,24 @@ import { createContext, Dispatch, SetStateAction, useContext, useState } from "r
 import { CircleDotIcon, CircleXIcon } from "lucide-react";
 
 interface CharactersContextData {
-  firstCharacter: JSX.Element;
+  playerCharacter: JSX.Element;
   computerCharacter: JSX.Element;
-  setFirstCharacter: Dispatch<SetStateAction<JSX.Element>>;
+  setPlayerCharacter: Dispatch<SetStateAction<JSX.Element>>;
   setComputerCharacter: Dispatch<SetStateAction<JSX.Element>>;
 }
 
 const CharactersContext = createContext<CharactersContextData>({} as CharactersContextData);
 
 export const CharactersProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [firstCharacter, setFirstCharacter] = useState(<CircleXIcon />);
+  const [playerCharacter, setPlayerCharacter] = useState(<CircleXIcon />);
   const [computerCharacter, setComputerCharacter] = useState(<CircleDotIcon />);
 
   return (
     <CharactersContext.Provider
       value={{
-        firstCharacter,
+        playerCharacter,
         computerCharacter,
-        setFirstCharacter,
+        setPlayerCharacter,
         setComputerCharacter,
       }}
     >
