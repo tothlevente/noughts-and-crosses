@@ -45,12 +45,12 @@
     --square-border: #44403c;
     --square-hover-background: #d6d3d1;
     --square-hover-color: #f5f5f4;
-    --first-character-color: #0ea5e9;
-    --second-character-color: #f43f5e;
+    --first-character-color: #047857;
+    --computer-character-color: #a16207;
   }
 
   .dark {
-    --background: 30 6.3% 25.1%;
+    --background: 20 14.3% 4.1%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -79,8 +79,8 @@
     --square-border: #f5f5f4;
     --square-hover-background: #57534e;
     --square-hover-color: #f5f5f4;
-    --first-character-color: #38bdf8;
-    --second-character-color: #fb7185;
+    --first-character-color: #6ee7b7;
+    --computer-character-color: #fde047;
   }
 }
 
@@ -131,7 +131,7 @@
     color: var(--first-character-color);
   }
 
-  .second-character {
-    color: var(--second-character-color);
+  .computer-character {
+    color: var(--computer-character-color);
   }
 }
